@@ -1,13 +1,13 @@
-package com.anto.hfooad.guitar;
+package com.anto.hfooad.instrument;
 
 import java.util.List;
 
-import com.anto.hfooad.guitar.enums.Builder;
-import com.anto.hfooad.guitar.enums.Type;
-import com.anto.hfooad.guitar.enums.Wood;
-import com.anto.hfooad.guitar.model.GuitarSpec;
-import com.anto.hfooad.guitar.model.Instrument;
-import com.anto.hfooad.guitar.model.Inventory;
+import com.anto.hfooad.instrument.enums.Builder;
+import com.anto.hfooad.instrument.enums.Type;
+import com.anto.hfooad.instrument.enums.Wood;
+import com.anto.hfooad.instrument.model.GuitarSpec;
+import com.anto.hfooad.instrument.model.Instrument;
+import com.anto.hfooad.instrument.model.Inventory;
 
 public class FindGuitarTester {
 

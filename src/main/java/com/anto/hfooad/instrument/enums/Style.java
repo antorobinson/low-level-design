@@ -1,4 +1,4 @@
-package com.anto.hfooad.guitar.enums;
+package com.anto.hfooad.instrument.enums;
 
 import lombok.Getter;
 

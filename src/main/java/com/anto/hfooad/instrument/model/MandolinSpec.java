@@ -1,9 +1,9 @@
-package com.anto.hfooad.guitar.model;
+package com.anto.hfooad.instrument.model;
 
-import com.anto.hfooad.guitar.enums.Builder;
-import com.anto.hfooad.guitar.enums.Style;
-import com.anto.hfooad.guitar.enums.Type;
-import com.anto.hfooad.guitar.enums.Wood;
+import com.anto.hfooad.instrument.enums.Builder;
+import com.anto.hfooad.instrument.enums.Style;
+import com.anto.hfooad.instrument.enums.Type;
+import com.anto.hfooad.instrument.enums.Wood;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

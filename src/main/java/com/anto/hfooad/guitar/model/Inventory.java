@@ -5,35 +5,38 @@ import java.util.List;
 
 public class Inventory {
 
-	private List<Guitar> guitars;
+	private List<Instrument> instruments;
 
 	public Inventory() {
-		guitars = new LinkedList<>();
+		instruments = new LinkedList<>();
 	}
 
-	public void addGuitar(String serialnumber, double price, Builder builder, String model, Type type, Wood backWood,
-			Wood topWood, Integer numStrings) {
-		
-		GuitarSpec guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood, numStrings);
-		Guitar guitar = new Guitar(serialnumber, price, guitarSpec);
-		guitars.add(guitar);
+	public void addInstrument(String serialnumber, double price, InstrumentSpec instrumentSpec) {
+		Instrument instrument = null;
+		if (instrumentSpec instanceof GuitarSpec) {
+			instrument = new Guitar(serialnumber, price, (GuitarSpec) instrumentSpec);
+		} else if (instrumentSpec instanceof MandolinSpec) {
+			instrument = new Mandolin(serialnumber, price, (MandolinSpec) instrumentSpec);
+		}
+		instruments.add(instrument);
 
 	}
 
-	public Guitar getGuitar(String serialNumber) {
-		for(Guitar g : guitars) {
-			if(g.getSerialnumber().equals(serialNumber)) return g;
+	public Instrument getGuitar(String serialNumber) {
+		for (Instrument instrument : instruments) {
+			if (instrument.getSerialnumber().equals(serialNumber))
+				return instrument;
 		}
 		return null;
 	}
 
-	public List<Guitar> search(GuitarSpec searchGuitar) {
-		
-		List<Guitar> matchedGuitars = new LinkedList<>();
-		
-		for(Guitar guitar : guitars) {
-			if(guitar.getGuitarSpec().matches(searchGuitar)){
-				matchedGuitars.add(guitar);
+	public List<Instrument> search(InstrumentSpec searchInstrumentSpec) {
+
+		List<Instrument> matchedGuitars = new LinkedList<>();
+
+		for (Instrument instrument : instruments) {
+			if (instrument.getSpec().matches(searchInstrumentSpec)) {
+				matchedGuitars.add(instrument);
 			}
 		}
 		return matchedGuitars;

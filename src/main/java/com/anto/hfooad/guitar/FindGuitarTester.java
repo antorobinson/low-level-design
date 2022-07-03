@@ -2,36 +2,42 @@ package com.anto.hfooad.guitar;
 
 import java.util.List;
 
-import com.anto.hfooad.guitar.model.Builder;
-import com.anto.hfooad.guitar.model.Guitar;
+import com.anto.hfooad.guitar.enums.Builder;
+import com.anto.hfooad.guitar.enums.Type;
+import com.anto.hfooad.guitar.enums.Wood;
 import com.anto.hfooad.guitar.model.GuitarSpec;
+import com.anto.hfooad.guitar.model.Instrument;
 import com.anto.hfooad.guitar.model.Inventory;
-import com.anto.hfooad.guitar.model.Type;
-import com.anto.hfooad.guitar.model.Wood;
 
 public class FindGuitarTester {
 
 	public static void main(String[] args) {
 		Inventory inventory = new Inventory();
 		initializeInventory(inventory);
-		
-		GuitarSpec searchGuitar = new GuitarSpec(Builder.FENDER, "startocoaster", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 2);
-		List<Guitar> guitars = inventory.search(searchGuitar);
-		
-		if(guitars.isEmpty()){
+
+		GuitarSpec searchGuitar = new GuitarSpec(Builder.FENDER, "startocoaster", Type.ELECTRIC, Wood.ALDER, Wood.ALDER,
+				2);
+		List<Instrument> instruments = inventory.search(searchGuitar);
+
+		if (instruments.isEmpty()) {
 			System.out.println("Sorry! we did not find any with your preference");
-		}else{
-			for(Guitar g : guitars){
-				System.out.println("We found one: \n"+ g);
+		} else {
+			for (Instrument instrument : instruments) {
+				System.out.println("We found "+instruments.size()+"\n" + instrument.toString());
 				System.out.println("----------------------");
 			}
 		}
 	}
-	
+
 	private static void initializeInventory(Inventory inventory) {
-		inventory.addGuitar("V1234", 12.3, Builder.FENDER, "startocoaster", Type.ELECTRIC,  Wood.ALDER, Wood.ALDER, 2);
-		inventory.addGuitar("V1256", 18.5, Builder.GIBSON, "hello", Type.ACOUSTIC,  Wood.ALDER, Wood.ALDER, 3);
-		inventory.addGuitar("V1278", 14, Builder.MARTIN, "hi", Type.ELECTRIC,  Wood.ALDER, Wood.ALDER, 5);
+
+		GuitarSpec guitarSpec1 = new GuitarSpec(Builder.FENDER, "startocoaster", Type.ELECTRIC,  Wood.ALDER, Wood.ALDER, 2);
+		GuitarSpec guitarSpec2 = new GuitarSpec(Builder.COLLINGS, "startocoaster", Type.ACOUSTIC,  Wood.ALDER, Wood.ALDER, 2);
+		GuitarSpec guitarSpec3 = new GuitarSpec(Builder.GIBSON, "startocoaster", Type.ELECTRIC,  Wood.ALDER, Wood.ALDER, 2);
+
+		inventory.addInstrument("V1234", 12.3, guitarSpec1 );
+		inventory.addInstrument("V1256", 15, guitarSpec2 );
+		inventory.addInstrument("V8934", 19, guitarSpec3 );
 	}
 
 }

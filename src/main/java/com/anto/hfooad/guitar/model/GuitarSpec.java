@@ -1,31 +1,34 @@
 package com.anto.hfooad.guitar.model;
 
-import lombok.AllArgsConstructor;
+import com.anto.hfooad.guitar.enums.Builder;
+import com.anto.hfooad.guitar.enums.Type;
+import com.anto.hfooad.guitar.enums.Wood;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-@AllArgsConstructor
-public class GuitarSpec {
-	private Builder builder;
-	private String model;
-	private Type type;
-	private Wood backWood;
-	private Wood topWood;
+@EqualsAndHashCode(callSuper = true)
+public class GuitarSpec extends InstrumentSpec {
 	private int numStrings;
 
-	public boolean matches(GuitarSpec searchGuitar){
+	public GuitarSpec(Builder builder, String model, Type type, Wood backWood,
+			Wood topWood, Integer numStrings) {
+		super(builder, model, type, backWood, topWood);
+		this.numStrings = numStrings;
+	}
 
-		if(builder != searchGuitar.getBuilder()) return false;
+	@Override
+	public boolean matches(InstrumentSpec instrumentSpec) {
 
-		if(model != null && !model.equalsIgnoreCase(searchGuitar.getModel())) return false;
-		
-		if(type != searchGuitar.getType()) return false;
-		
-		if(backWood != searchGuitar.getBackWood()) return false;
-		
-		if(topWood != searchGuitar.getTopWood()) return false;
+		if (!super.matches(instrumentSpec))
+			return false;
+		if (!(instrumentSpec instanceof GuitarSpec))
+			return false;
 
-		if(numStrings != searchGuitar.getNumStrings()) return false;
+		GuitarSpec spec = (GuitarSpec) instrumentSpec;
+		if (numStrings != spec.getNumStrings())
+			return false;
 
 		return true;
 	}

@@ -1,14 +1,17 @@
 package com.anto.hfooad.guitar.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-@AllArgsConstructor
-public class Guitar {
+@EqualsAndHashCode(callSuper = true)
+public class Guitar extends Instrument {
+	public Guitar(String serialnumber, double price, GuitarSpec spec){
+		super(serialnumber, price, spec);
+	}
 
-	private String serialnumber;
-	private double price;
-	private GuitarSpec guitarSpec;
-	
+	@Override
+	public String toString() {
+		return super.toString();
+	};
 }

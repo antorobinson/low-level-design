@@ -6,9 +6,11 @@ import com.anto.hfooad.instrument.enums.Wood;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public abstract class InstrumentSpec {
     private Builder builder;
     private String model;
